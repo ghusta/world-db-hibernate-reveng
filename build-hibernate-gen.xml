@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Generation with Hibernate Tools" basedir="." default="gen-hib-init">
+<project name="Generation with Hibernate Tools" basedir="." default="infos-path">
 
     <property environment="env"/>
 
