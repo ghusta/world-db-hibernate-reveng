@@ -109,15 +109,6 @@
                 <version>5.7.0.Final</version>
             </dependency>
 
-            <!-- Libs embarquées dans Tomcat 8.0 (BOM) -->
-            <dependency>
-                <groupId>fr.gouv.finances.douane.rh.tomcat</groupId>
-                <artifactId>tomcat-provided-spec-bom</artifactId>
-                <version>8.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <!-- LIB UTILITAIRES -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -184,6 +175,13 @@
             <artifactId>hibernate-core</artifactId>
         </dependency>
 
+        <!-- Use with APT -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
@@ -214,7 +212,7 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-tools</artifactId>
             <version>5.2.3.Final</version>
-            <scope>test</scope>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
