@@ -26,25 +26,37 @@ public interface ${entityName}Repository
 <#-- Générer un finder JPA pour cette property -->
 <#foreach property in pojo.getAllPropertiesIterator()><#if c2j.hasMetaAttribute(property, "gen-finder")>
 <#assign propertyJavaType = pojo.getJavaTypeName(property, jdk5) />
-    // Finder Spring Data JPA pour : ${property.name}
 
+    /**
+     * Finder pour : ${property.name}.
+     *
+     * @param ${property.name} critère recherche (égalité).
+     * @return Liste de résultats, avec données annexes (nombre total de pages / résultats).
+     */
     ${pojo.importType("java.util.List")}<${entityName}> findBy${property.name?cap_first}(${propertyJavaType} ${property.name});
 
     /**
-     * Lecture d'une page.
+     * Finder pour : ${property.name}, avec pagination.
      *
      * @param ${property.name} critère recherche (égalité).
-     * @param pageable Requête page / tri.
-     * @return {@link Page} de résultat, avec données annexes (nombre total de pages / résultats).
+     * @param pageable Requête page, optionnellement avec tri ({@link Pageable#getSort()}).
+     * @return {@link Page} de résultat, avec données annexes (nombre total de pages, nombre total de résultats).
      */
-    ${pojo.importType("org.springframework.data.domain.Page")}<${entityName}> findBy${property.name?cap_first}(${propertyJavaType} ${property.name}, ${pojo.importType("org.springframework.data.domain.Pageable")} pageable);
+    ${pojo.importType("org.springframework.data.domain.Page")}<${entityName}> findBy${property.name?cap_first}(${propertyJavaType} ${property.name}, final ${pojo.importType("org.springframework.data.domain.Pageable")} pageable);
 
-    ${pojo.importType("java.util.List")}<${entityName}> findBy${property.name?cap_first}(${propertyJavaType} ${property.name}, ${pojo.importType("org.springframework.data.domain.Sort")} sort);
+    /**
+     * Finder pour : ${property.name}, avec tri.
+     *
+     * @param ${property.name} critère recherche (égalité).
+     * @param sort Options de tri.
+     * @return Liste de résultats, avec données annexes (nombre total de pages / résultats).
+     */
+    ${pojo.importType("java.util.List")}<${entityName}> findBy${property.name?cap_first}(${propertyJavaType} ${property.name}, final ${pojo.importType("org.springframework.data.domain.Sort")} sort);
 
 </#if>
 <#if c2j.hasMetaAttribute(property, "gen-finder-like")>
     /**
-     * Find avec clause SQL LIKE.
+     * Finder pour : ${property.name}, avec clause SQL LIKE.
      *
      * @param ${property.name} critère recherche (like) : peut contenir des caractères génériques comme '%' ou '_'.
      * @return Liste de résultats.
