@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering SYSTEM
+        "file:conf/hibernate/dtd/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+
+    <schema-selection match-schema="public"/>
+
+    <type-mapping>
+        <!--<sql-type jdbc-type="NUMERIC" precision="1" hibernate-type="int" not-null="true"/>-->
+        <!--<sql-type jdbc-type="NUMERIC" precision="1" hibernate-type="integer" not-null="false"/>-->
+        <!--<sql-type jdbc-type="NUMERIC" precision="6" scale="0" hibernate-type="int" not-null="true"/>-->
+        <!--<sql-type jdbc-type="NUMERIC" precision="6" scale="0" hibernate-type="integer" not-null="false"/>-->
+        <!--<sql-type jdbc-type="NUMERIC" precision="11" scale="0" hibernate-type="long" not-null="true"/>-->
+        <!--<sql-type jdbc-type="NUMERIC" precision="11" scale="0" hibernate-type="java.lang.Long" not-null="false"/>-->
+
+        <sql-type jdbc-type="DATE" hibernate-type="java.time.LocalDate"/>
+        <sql-type jdbc-type="TIMESTAMP" hibernate-type="java.time.LocalDateTime"/>
+        <!-- ne marche pas avec Postgres driver 42.0 -->
+        <sql-type jdbc-type="TIMESTAMP_WITH_TIMEZONE" hibernate-type="java.time.ZonedDateTime"/>
+    </type-mapping>
+
+    <table-filter match-name="city"></table-filter>
+    <table-filter match-name="country"></table-filter>
+    <table-filter match-name="country_language" match-schema="public"></table-filter>
+
+    <table name="city" schema="public">
+        <!--<primary-key property="id">-->
+            <!--&lt;!&ndash; Pour forcer type objet pour ID... &ndash;&gt;-->
+            <!--<key-column name="id" type="integer"/>-->
+        <!--</primary-key>-->
+    </table>
+
+    <table name="country" schema="public">
+        <column name="name">
+            <meta attribute="gen-finder" />
+            <meta attribute="gen-finder-like" />
+        </column>
+    </table>
+
+    <table name="country_language" schema="public">
+    </table>
+
+</hibernate-reverse-engineering>
