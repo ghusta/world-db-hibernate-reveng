@@ -24,6 +24,7 @@ public interface ${entityName}Repository
 {
 
 <#-- Générer un finder JPA pour cette property -->
+<#-- Doc Spring Data JPA : Defining query methods (https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.details) -->
 <#foreach property in pojo.getAllPropertiesIterator()><#if c2j.hasMetaAttribute(property, "gen-finder")>
 <#assign propertyJavaType = pojo.getJavaTypeName(property, jdk5) />
 
