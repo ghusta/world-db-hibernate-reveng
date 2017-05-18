@@ -88,6 +88,16 @@ public interface ${entityName}Repository
      */
     ${pojo.importType("java.util.List")}<${entityName}> findBy${property.name?cap_first}Like(${propertyJavaType} ${property.name});
 
+    /**
+     * Finder pour : ${property.name}, avec clause SQL LIKE, avec pagination.
+     */
+    ${pojo.importType("org.springframework.data.domain.Page")}<${entityName}> findBy${property.name?cap_first}Like(${propertyJavaType} ${property.name}, final ${pojo.importType("org.springframework.data.domain.Pageable")} pageable);
+
+    /**
+     * Finder pour : ${property.name}, avec clause SQL LIKE, avec tri.
+     */
+    ${pojo.importType("java.util.List")}<${entityName}> findBy${property.name?cap_first}Like(${propertyJavaType} ${property.name}, final ${pojo.importType("org.springframework.data.domain.Sort")} sort);
+
 </#if>
 </#foreach>
 }
