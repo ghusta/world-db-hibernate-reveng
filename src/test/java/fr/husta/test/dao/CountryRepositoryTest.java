@@ -94,5 +94,16 @@ public class CountryRepositoryTest
         }
     }
 
+    @Test
+    public void findByNameAndStream() throws Exception
+    {
+        String name = "France";
+        Stream<Country> countryStream = countryRepository.streamByName(name);
+        try (Stream<Country> stream = countryStream)
+        {
+            stream
+                    .forEach(country -> System.out.println(String.format("%s on %s", country.getName(), country.getContinent())));
+        }
+    }
 
 }

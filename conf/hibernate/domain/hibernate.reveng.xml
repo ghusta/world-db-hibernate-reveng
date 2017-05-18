@@ -34,6 +34,7 @@
         <meta attribute="gen-finder-java8-stream" />
         <column name="name">
             <meta attribute="gen-finder" />
+            <meta attribute="gen-finder-java8-stream" />
             <meta attribute="gen-finder-like" />
         </column>
     </table>
