@@ -11,6 +11,10 @@
     <name>Hibernate Tools RevEng for World DB</name>
     <description>Hibernate Tools - Reverse Engineering for World DB (PostgreSQL)</description>
 
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -142,7 +146,7 @@
             <!-- Logback -->
             <dependency>
                 <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-core</artifactId>
+                <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
             </dependency>
 
@@ -170,6 +174,7 @@
     </dependencyManagement>
     <dependencies>
 
+        <!-- HIBERNATE + JPA -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -182,6 +187,22 @@
             <version>${hibernate.version}</version>
         </dependency>
 
+        <!-- SPRING FRAMEWORK -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- SPRING DATA JPA -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
@@ -204,6 +225,13 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Logback -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -233,6 +261,11 @@
                         <debug>true</debug>
                         <showDeprecation>true</showDeprecation>
                         <showWarnings>true</showWarnings>
+                        <compilerArgs>
+                            <!-- APT Options for JPAMetaModelEntityProcessor -->
+                            <compilerArg>-AaddGeneratedAnnotation=true</compilerArg>
+                            <compilerArg>-AaddGenerationDate=true</compilerArg>
+                        </compilerArgs>
                     </configuration>
                 </plugin>
 
@@ -281,7 +314,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
-                    <version>1.7</version>
+                    <version>3.0.0</version>
                 </plugin>
 
             </plugins>
@@ -301,6 +334,18 @@
                         <configuration>
                             <sources>
                                 <source>${project.basedir}/target/generated-sources/hibernate</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>add-gen-sources-hibernate-test</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-test-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${project.basedir}/target/generated-sources/hibernate-test</source>
                             </sources>
                         </configuration>
                     </execution>
@@ -344,7 +389,8 @@
                                         <property name="dest_dir"
                                                   value="${project.build.directory}/generated-sources/hibernate"/>
                                         <property name="config_modele" value="${config.modele}"/>
-                                        <property name="project_groupId" value="${project.groupId}.${config.modele}"/>
+                                        <property name="project_groupId" value="${project.groupId}"/>
+                                        <property name="base_package" value="${project.groupId}"/>
 
                                         <ant antfile="${basedir}/build-hibernate-gen.xml">
                                             <target name="gen-hib-entities"/>
