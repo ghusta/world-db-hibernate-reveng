@@ -18,11 +18,17 @@ import ${pojo.getQualifiedDeclarationName()};
  */
 @${pojo.importType("javax.annotation.Generated")}(value = "Généré par Hibernate Tools ${version}", date = "${.now?iso_local}")
 @${pojo.importType("org.springframework.stereotype.Repository")}
+@${pojo.importType("org.springframework.transaction.annotation.Transactional")}
 @SuppressWarnings("serial")
 public interface ${entityName}Repository
     extends ${pojo.importType("org.springframework.data.jpa.repository.JpaRepository")}<${pojo.getDeclarationName()}, ${pkFqcn}>
 {
+<#-- Générer une méthode pour Java 8 : Stream<T> streamAll(); -->
+<#if pojo.hasMetaAttribute("gen-finder-java8-stream")>
 
+    @${pojo.importType("org.springframework.data.jpa.repository.Query")}("select o from ${entityName} o")
+    ${pojo.importType("java.util.stream.Stream")}<${entityName}> streamAll();
+</#if>
 <#-- Générer un finder JPA pour cette property -->
 <#-- Doc Spring Data JPA : Defining query methods (https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.details) -->
 <#foreach property in pojo.getAllPropertiesIterator()><#if c2j.hasMetaAttribute(property, "gen-finder")>
