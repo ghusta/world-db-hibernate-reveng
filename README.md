@@ -6,6 +6,12 @@
 
 As a result, code will be generated in _target/generated-sources/hibernate_.
 
+## Running the database server
+
+You can use a docker container, like this one :
+
+`docker run -d -pxxxx:5432 ghusta/postgres-world-db:2.0`
+
 ## Templates (FreeMarker)
 
 - pojo : **pojo/Pojo.ftl**
