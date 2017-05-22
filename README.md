@@ -10,7 +10,7 @@ As a result, code will be generated in _target/generated-sources/hibernate_.
 
 You can use a docker container, like this one :
 
-`docker run -d -pxxxx:5432 ghusta/postgres-world-db:2.0`
+`docker run -d -pxxxx:5432 --name world-db ghusta/postgres-world-db:2.0`
 
 ## Templates (FreeMarker)
 
