@@ -90,6 +90,16 @@ public interface ${entityName}Repository
     ${pojo.importType("java.util.List")}<${entityName}> findBy${property.name?cap_first}(${propertyJavaType} ${property.name}, final ${pojo.importType("org.springframework.data.domain.Sort")} sort);
 
 </#if>
+<#if c2j.hasMetaAttribute(property, "gen-finder-ignore-case")>
+    /**
+     * Finder pour : ${property.name}, insensible à la casse.
+     *
+     * @param ${property.name} critère recherche (égalité).
+     * @return {@link List} de résultats.
+     */
+    ${pojo.importType("java.util.List")}<${entityName}> findBy${property.name?cap_first}IgnoreCase(${propertyJavaType} ${property.name});
+
+</#if>
 <#if c2j.hasMetaAttribute(property, "gen-finder-java8-stream")>
     @${pojo.importType("org.springframework.data.jpa.repository.Query")}("select o from ${entityName} o where o.${property.name} = :${property.name}")
     ${pojo.importType("java.util.stream.Stream")}<${entityName}> streamBy${property.name?cap_first}(@${pojo.importType("org.springframework.data.repository.query.Param")}("${property.name}") ${propertyJavaType} ${property.name});
