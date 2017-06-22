@@ -1,6 +1,8 @@
 package fr.husta.test.dao;
 
 import fr.husta.test.config.DatabaseConfiguration;
+import fr.husta.test.database.TestDatabase;
+import fr.husta.test.domain.City;
 import fr.husta.test.domain.Country;
 import org.junit.After;
 import org.junit.Before;
@@ -25,7 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {DatabaseConfiguration.class})
 @ActiveProfiles("TEST")
-@Transactional
+@TestDatabase // includes @Transactional
 @Rollback
 public class CountryRepositoryTest
 {
@@ -106,4 +108,14 @@ public class CountryRepositoryTest
         }
     }
 
+    @Test
+    public void findCapitalForFrance() throws Exception
+    {
+        List<Country> countryFr = countryRepository.findByName("France");
+        assertThat(countryFr).hasSize(1);
+
+        City capital = countryFr.get(0).getCapital();
+        assertThat(capital).isNotNull();
+        assertThat(capital.getName()).isEqualToIgnoringCase("Paris");
+    }
 }

@@ -28,15 +28,23 @@
             <!-- Pour forcer type objet pour ID... -->
             <key-column name="id" type="integer"/>
         </primary-key>
+        <column name="name">
+            <!--<meta attribute="gen-finder"/>-->
+            <meta attribute="gen-finder-unique"/>
+        </column>
     </table>
 
     <table name="country" schema="public">
-        <meta attribute="gen-finder-java8-stream" />
+        <meta attribute="gen-finder-java8-stream"/>
         <column name="name">
-            <meta attribute="gen-finder" />
-            <meta attribute="gen-finder-java8-stream" />
-            <meta attribute="gen-finder-like" />
+            <meta attribute="gen-finder"/>
+            <meta attribute="gen-finder-java8-stream"/>
+            <meta attribute="gen-finder-like"/>
         </column>
+
+        <foreign-key constraint-name="country_capital_fkey" foreign-schema="public">
+            <many-to-one property="capital" />
+        </foreign-key>
     </table>
 
     <table name="country_language" schema="public">
