@@ -110,7 +110,7 @@ public interface ${entityName}Repository
     ${pojo.importType("java.util.List")}<${entityName}> findBy${property.name?cap_first}Like(${propertyJavaType} ${property.name}, final ${pojo.importType("org.springframework.data.domain.Sort")} sort);
 
 </#if>
-    <#if c2j.hasMetaAttribute(property, "gen-finder-like-ignore-case")>
+<#if c2j.hasMetaAttribute(property, "gen-finder-like-ignore-case")>
     /**
     * Finder pour : ${property.name}, avec clause SQL LIKE, insensible à la casse.
     *
@@ -128,6 +128,17 @@ public interface ${entityName}Repository
     * Finder pour : ${property.name}, avec clause SQL LIKE, insensible à la casse, avec tri.
     */
     ${pojo.importType("java.util.List")}<${entityName}> findBy${property.name?cap_first}LikeIgnoreCase(${propertyJavaType} ${property.name}, final ${pojo.importType("org.springframework.data.domain.Sort")} sort);
+
+</#if>
+<#if c2j.hasMetaAttribute(property, "gen-finder-between")>
+    /**
+    * Finder pour : ${property.name}, avec clause SQL BETWEEN.
+    *
+    * @param startVal critère debut.
+    * @param endVal critère fin.
+    * @return Liste de résultats.
+    */
+    ${pojo.importType("java.util.List")}<${entityName}> findBy${property.name?cap_first}Between(${propertyJavaType} startVal, ${propertyJavaType} endVal);
 
 </#if>
 </#foreach>
