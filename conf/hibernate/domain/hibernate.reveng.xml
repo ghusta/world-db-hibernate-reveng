@@ -43,7 +43,13 @@
         </column>
 
         <foreign-key constraint-name="country_capital_fkey" foreign-schema="public">
-            <many-to-one property="capital" />
+            <many-to-one property="capital" exclude="false"/>
+            <set exclude="true" />
+
+            <!-- Should generate @OneToOne on Country ? Only works on same columns names between FK and PK ?!? -->
+            <!--<one-to-one property="capital" exclude="false" />-->
+            <!--<inverse-one-to-one exclude="true" />-->
+            <!-- TODO: to make it work, override org.hibernate.cfg.reveng.DefaultReverseEngineeringStrategy#isOneToOne -->
         </foreign-key>
     </table>
 
