@@ -337,6 +337,13 @@
                     <version>3.0.0</version>
                 </plugin>
 
+                <!-- PLUGIN LIQUIBASE - http://www.liquibase.org/documentation/maven/index.html -->
+                <plugin>
+                    <groupId>org.liquibase</groupId>
+                    <artifactId>liquibase-maven-plugin</artifactId>
+                    <version>3.5.3</version>
+                </plugin>
+
             </plugins>
         </pluginManagement>
         <plugins>
@@ -415,6 +422,7 @@
                                         <ant antfile="${basedir}/build-hibernate-gen.xml">
                                             <target name="gen-hib-entities"/>
                                             <target name="gen-hib-daos"/>
+                                            <target name="gen-hib-dtos"/>
                                         </ant>
 
                                     </target>
