@@ -430,7 +430,6 @@
                                         <ant antfile="${basedir}/build-hibernate-gen.xml">
                                             <target name="gen-hib-entities"/>
                                             <target name="gen-hib-daos"/>
-                                            <target name="gen-hib-dtos"/>
                                         </ant>
 
                                     </target>
