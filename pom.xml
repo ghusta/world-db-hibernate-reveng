@@ -405,6 +405,24 @@
 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>compile</goal>
+                                </goals>
+                                <configuration>
+                                    <includes>
+                                        <include>fr/husta/test/reveng/**</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-antrun-plugin</artifactId>
                         <executions>
                             <execution>
@@ -421,6 +439,7 @@
                                         <property name="test_classpath" refid="maven.test.classpath"/>
                                         <property name="plugin_classpath" refid="maven.plugin.classpath"/>
 
+                                        <property name="classes_dir" value="${project.build.outputDirectory}"/>
                                         <property name="dest_dir"
                                                   value="${project.build.directory}/generated-sources/hibernate"/>
                                         <property name="config_modele" value="${config.modele}"/>
@@ -428,6 +447,7 @@
                                         <property name="base_package" value="${project.groupId}"/>
 
                                         <ant antfile="${basedir}/build-hibernate-gen.xml">
+                                            <!--<target name="infos-path"/>-->
                                             <target name="gen-hib-entities"/>
                                             <target name="gen-hib-daos"/>
                                             <target name="gen-hib-dtos"/>
