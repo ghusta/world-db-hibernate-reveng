@@ -1,5 +1,6 @@
 package fr.husta.test.jdbc;
 
+import fr.husta.test.ansi.AnsiColor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,7 +31,7 @@ public class ExtractMetadataTest
     @Test
     public void testDatabaseMetadata() throws Exception
     {
-        System.out.println("--- TEST : EXTRACTION METADATA JDBC ---");
+        System.out.println(AnsiColor.colorizeDefault("--- TEST : EXTRACTION METADATA JDBC ---"));
 
         String jdbcUrl = dbProperties.getProperty("db.url");
         String jdbcUsername = dbProperties.getProperty("db.username");
@@ -52,13 +53,18 @@ public class ExtractMetadataTest
 
         System.out.println();
         List<String> schemaList = ExtractMetadataUtil.getSchemaList(connection);
-        System.out.println("--- LISTE DES SCHEMAS ---");
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES SCHEMAS ---"));
         System.out.println(schemaList);
         System.out.println();
 
         List<String> tableList = ExtractMetadataUtil.getTableList(connection, "public");
-        System.out.println("--- LISTE DES TABLES ---");
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES TABLES ---"));
         System.out.println(tableList);
+        System.out.println();
+
+        List<String> tableTypesList = ExtractMetadataUtil.getTableTypeList(connection);
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES TYPES D'ENTITES ---"));
+        System.out.println(listStringToBullet(tableTypesList));
         System.out.println();
 
         connection.close();

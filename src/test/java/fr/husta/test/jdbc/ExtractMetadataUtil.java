@@ -85,7 +85,7 @@ public class ExtractMetadataUtil
     {
         String catalog = "";
         String tableNamePattern = "%";
-        String[] tableTypes = new String[]{"TABLE"};
+        String[] tableTypes = new String[] {"TABLE"};
         DatabaseMetaData metaData = cnx.getMetaData();
         ResultSet tablesRS = metaData.getTables(catalog, schemaPattern, tableNamePattern, tableTypes);
 
@@ -146,8 +146,8 @@ public class ExtractMetadataUtil
             }
 
             String sqlTypeSize = String.format("%s(%s)", typeName, colSizeToString(columnSize, decimalDigits));
-            listCols.add(String.format("%-25s [ %-20s - JDBC TYPE: %-10s - NULLABLE: %5s - DEFAULT: %5s - AUTOINC: %3s%s] %s", columnName, sqlTypeSize,
-                    jdbcType, strIsNullable, (defaultValue == null ? "" : defaultValue), strIsAutoInc,
+            listCols.add(String.format("%-25s [ %-20s - JDBC TYPE: %-10s - NULLABLE: %5s - DEFAULT: %5s - AUTOINC: %3s%s] %s",
+                    columnName, sqlTypeSize, jdbcType, strIsNullable, (defaultValue == null ? "" : defaultValue), strIsAutoInc,
                     (sourceDataRefJdbcType == null ? "" : " - DATA REF TYPE: " + sourceDataRefJdbcType),
                     (remarks == null ? "" : " -- Comment : " + remarks)));
         }
@@ -168,8 +168,7 @@ public class ExtractMetadataUtil
             short keySeq = pkRS.getShort("KEY_SEQ");
             String pkName = pkRS.getString("PK_NAME");
 
-            listPKs.add(String.format("%s %s",
-                    columnName, (pkName == null ? "" : "PK: " + pkName)));
+            listPKs.add(String.format("%s %s", columnName, (pkName == null ? "" : "PK: " + pkName)));
         }
         return listPKs;
     }
@@ -189,9 +188,7 @@ public class ExtractMetadataUtil
             String pkTableName = fkRS.getString("PKTABLE_NAME");
             String pkColumnName = fkRS.getString("PKCOLUMN_NAME");
 
-            listFKs.add(String.format("%s.%s (FK) => %s.%s (PK)",
-                    fkTableName, fkColumnName,
-                    pkTableName, pkColumnName));
+            listFKs.add(String.format("%s.%s (FK) => %s.%s (PK)", fkTableName, fkColumnName, pkTableName, pkColumnName));
         }
         return listFKs;
     }
@@ -211,9 +208,7 @@ public class ExtractMetadataUtil
             String pkTableName = fkRS.getString("PKTABLE_NAME");
             String pkColumnName = fkRS.getString("PKCOLUMN_NAME");
 
-            listFKs.add(String.format("%s.%s (FK) => %s.%s (PK)",
-                    fkTableName, fkColumnName,
-                    pkTableName, pkColumnName));
+            listFKs.add(String.format("%s.%s (FK) => %s.%s (PK)", fkTableName, fkColumnName, pkTableName, pkColumnName));
         }
         return listFKs;
     }
@@ -232,8 +227,7 @@ public class ExtractMetadataUtil
         return listTableTypes;
     }
 
-    public static List<String> getUserDefinedTypeList(final Connection cnx, final String schemaPattern)
-            throws SQLException
+    public static List<String> getUserDefinedTypeList(final Connection cnx, final String schemaPattern) throws SQLException
     {
         String catalog = "";
         String typeNamePattern = "%";
@@ -250,9 +244,8 @@ public class ExtractMetadataUtil
             String supertypeSchem = typeNameRS.getString("SUPERTYPE_SCHEM");
             String supertypeName = typeNameRS.getString("SUPERTYPE_NAME");
 
-            listTypes.add(String.format("%s %s %s => %s %s %s",
-                    typeCat, typeSchem, typeName,
-                    supertypeCat, supertypeSchem, supertypeName));
+            listTypes.add(String.format("%s %s %s => %s %s %s", typeCat, typeSchem, typeName, supertypeCat, supertypeSchem,
+                    supertypeName));
         }
         return listTypes;
     }
@@ -322,7 +315,7 @@ public class ExtractMetadataUtil
     {
         String catalog = "";
         String tableNamePattern = "%";
-        String[] tableTypes = new String[]{"SEQUENCE"};
+        String[] tableTypes = new String[] {"SEQUENCE"};
         ResultSet tablesRS = cnx.getMetaData().getTables(catalog, schemaPattern, tableNamePattern, tableTypes);
 
         List<String> listTables = new ArrayList<>();
