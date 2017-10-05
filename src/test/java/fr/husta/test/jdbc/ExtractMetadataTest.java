@@ -57,8 +57,13 @@ public class ExtractMetadataTest
         System.out.println();
 
         List<String> tableList = ExtractMetadataUtil.getTableList(connection, "public");
-        System.out.println("--- LISTE DES TABLES ---");
+        System.out.println("--- LISTE DES TABLES (public) ---");
         System.out.println(tableList);
+        System.out.println();
+
+        List<String> tableListScWorld = ExtractMetadataUtil.getTableList(connection, "sc_world");
+        System.out.println("--- LISTE DES TABLES (sc_world) ---");
+        System.out.println(tableListScWorld);
         System.out.println();
 
         connection.close();
