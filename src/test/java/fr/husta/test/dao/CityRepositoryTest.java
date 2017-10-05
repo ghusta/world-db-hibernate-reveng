@@ -15,6 +15,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -37,6 +39,21 @@ public class CityRepositoryTest
     @After
     public void tearDown() throws Exception
     {
+    }
+
+    @Test
+    public void findById() throws Exception
+    {
+        Optional<City> city1 = cityRepository.findById(1);
+        assertThat(city1).isPresent();
+        assertThat(city1.get().getCountry()).isNotNull();
+    }
+
+    @Test
+    public void existsById() throws Exception
+    {
+        boolean exists = cityRepository.existsById(1);
+        assertThat(exists).isTrue();
     }
 
     @Test
