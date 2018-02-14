@@ -20,8 +20,19 @@
         <level value="info"/>
     </logger>
 
+    <logger name="org.hibernate.type">
+        <level value="trace"/>
+    </logger>
     <logger name="org.hibernate.stat" additivity="false" level="debug">
         <appender-ref ref="FILE"/>
+    </logger>
+
+    <logger name="com.zaxxer.hikari">
+        <level value="info"/>
+    </logger>
+
+    <logger name="org.postgresql.jdbc.PgConnection">
+        <level value="debug"/>
     </logger>
 
     <root level="warn">
