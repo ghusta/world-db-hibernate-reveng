@@ -1,5 +1,6 @@
 package fr.husta.test.jdbc;
 
+import fr.husta.test.ansi.AnsiColor;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -49,22 +50,64 @@ public class ExtractMetadataTest
         System.out.println("getMaxColumnNameLength = " + metaData.getMaxColumnNameLength());
         System.out.println("supportsMixedCaseIdentifiers = " + metaData.supportsMixedCaseIdentifiers());
         System.out.println("supportsMixedCaseQuotedIdentifiers = " + metaData.supportsMixedCaseQuotedIdentifiers());
+        System.out.println("supportsSchemasInDataManipulation = " + metaData.supportsSchemasInDataManipulation());
+        System.out.println("supportsSchemasInTableDefinitions = " + metaData.supportsSchemasInTableDefinitions());
+        System.out.println("supportsANSI92IntermediateSQL = " + metaData.supportsANSI92IntermediateSQL());
+        System.out.println("supportsANSI92FullSQL = " + metaData.supportsANSI92FullSQL());
+        System.out.println("supportsTransactions = " + metaData.supportsTransactions());
+        System.out.println("supportsMultipleTransactions = " + metaData.supportsMultipleTransactions());
+        System.out.println("supportsOpenCursorsAcrossCommit = " + metaData.supportsOpenCursorsAcrossCommit());
+        System.out.println("supportsOpenStatementsAcrossCommit = " + metaData.supportsOpenStatementsAcrossCommit());
+        System.out.println("supportsSelectForUpdate = " + metaData.supportsSelectForUpdate());
+        System.out.println("supportsUnion = " + metaData.supportsUnion());
+        System.out.println("supportsStoredProcedures = " + metaData.supportsStoredProcedures());
+        System.out.println("supportsNamedParameters = " + metaData.supportsNamedParameters());
+        System.out.println("supportsOrderByUnrelated = " + metaData.supportsOrderByUnrelated());
 
         System.out.println();
         List<String> schemaList = ExtractMetadataUtil.getSchemaList(connection);
-        System.out.println("--- LISTE DES SCHEMAS ---");
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES SCHEMAS ---"));
         System.out.println(schemaList);
         System.out.println();
 
-        List<String> tableList = ExtractMetadataUtil.getTableList(connection, "public");
-        System.out.println("--- LISTE DES TABLES (public) ---");
+        String currentSchema = "public";
+
+        List<String> tableList = ExtractMetadataUtil.getTableList(connection, currentSchema);
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES TABLES ---"));
+        System.out.println(AnsiColor.colorize("SCHEMA => " + currentSchema, AnsiColor.FG_RED));
         System.out.println(tableList);
         System.out.println();
 
-        List<String> tableListScWorld = ExtractMetadataUtil.getTableList(connection, "sc_world");
-        System.out.println("--- LISTE DES TABLES (sc_world) ---");
+        currentSchema = "sc_world";
+
+        List<String> tableListScWorld = ExtractMetadataUtil.getTableList(connection, currentSchema);
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES TABLES ---"));
+        System.out.println(AnsiColor.colorize("SCHEMA => " + currentSchema, AnsiColor.FG_RED));
         System.out.println(tableListScWorld);
         System.out.println();
+
+        currentSchema = "public";
+        List<String> colsList;
+
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES COLONNES / TABLE ---"));
+        colsList = ExtractMetadataUtil.getTableColumnList(connection, currentSchema, "city");
+        System.out.println(AnsiColor.colorize("CITY => ", AnsiColor.FG_GREEN));
+        System.out.println(listStringToBullet(colsList));
+
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES COLONNES / TABLE ---"));
+        colsList = ExtractMetadataUtil.getTableColumnList(connection, currentSchema, "country");
+        System.out.println(AnsiColor.colorize("COUNTRY => ", AnsiColor.FG_GREEN));
+        System.out.println(listStringToBullet(colsList));
+
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES PK / TABLE ---"));
+        colsList = ExtractMetadataUtil.getTablePrimaryKeysList(connection, currentSchema, "city");
+        System.out.println(AnsiColor.colorize("PK CITY => ", AnsiColor.FG_MAGENTA));
+        System.out.println(listStringToBullet(colsList));
+
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES PK / TABLE ---"));
+        colsList = ExtractMetadataUtil.getTablePrimaryKeysList(connection, currentSchema, "country");
+        System.out.println(AnsiColor.colorize("PK COUNTRY => ", AnsiColor.FG_MAGENTA));
+        System.out.println(listStringToBullet(colsList));
 
         connection.close();
     }

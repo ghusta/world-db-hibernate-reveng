@@ -145,8 +145,9 @@ public class ExtractMetadataUtil
                 sourceDataRefJdbcType = JDBCType.valueOf(sourceDataRef);
             }
 
-            String sqlTypeSize = String.format("%s(%s)", typeName, colSizeToString(columnSize, decimalDigits));
-            listCols.add(String.format("%-25s [ %-20s - JDBC TYPE: %-10s - NULLABLE: %5s - DEFAULT: %5s - AUTOINC: %3s%s] %s", columnName, sqlTypeSize,
+            String colSizeToString = colSizeToString(columnSize, decimalDigits);
+            String sqlTypeAndSize = (colSizeToString == null ? String.format("%s", typeName) : String.format("%s(%s)", typeName, colSizeToString));
+            listCols.add(String.format("%-25s [ %-20s - JDBC TYPE: %-10s - NULLABLE: %5s - DEFAULT: %5s - AUTOINC: %3s%s] %s", columnName, sqlTypeAndSize,
                     jdbcType, strIsNullable, (defaultValue == null ? "" : defaultValue), strIsAutoInc,
                     (sourceDataRefJdbcType == null ? "" : " - DATA REF TYPE: " + sourceDataRefJdbcType),
                     (remarks == null ? "" : " -- Comment : " + remarks)));
@@ -168,7 +169,7 @@ public class ExtractMetadataUtil
             short keySeq = pkRS.getShort("KEY_SEQ");
             String pkName = pkRS.getString("PK_NAME");
 
-            listPKs.add(String.format("%s %s",
+            listPKs.add(String.format("%-25s %s",
                     columnName, (pkName == null ? "" : "PK: " + pkName)));
         }
         return listPKs;
@@ -267,7 +268,7 @@ public class ExtractMetadataUtil
     {
         if (size == UNKNOWN_LENGTH)
         {
-            return CHAR_INFINI;
+            return null;
         }
         else
         {
