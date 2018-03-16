@@ -79,16 +79,12 @@ public class DatabaseConfiguration
     @Bean(/* destroyMethod = "close" */)
     public DataSource dataSource(Environment env)
     {
-        DataSource ds = null;
-
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setUrl(env.getRequiredProperty("db.url"));
         dataSource.setUsername(env.getRequiredProperty("db.username"));
         dataSource.setPassword(env.getRequiredProperty("db.password"));
 
-        ds = dataSource;
-
-        return ds;
+        return dataSource;
     }
 
     @Bean
