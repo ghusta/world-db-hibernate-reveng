@@ -13,6 +13,7 @@
         <file>logs/app-test.log</file>
     </appender>
 
+    <!-- SPRING FWK -->
     <logger name="org.springframework.orm.jpa.JpaTransactionManager">
         <level value="debug"/>
     </logger>
@@ -20,11 +21,21 @@
         <level value="info"/>
     </logger>
 
+    <!-- HIBERNATE -->
     <logger name="org.hibernate.type">
-        <level value="trace"/>
+        <level value="info"/>
     </logger>
-    <logger name="org.hibernate.stat" additivity="false" level="debug">
+    <logger name="org.hibernate.stat" additivity="false">
+        <level value="debug"/>
         <appender-ref ref="FILE"/>
+    </logger>
+
+    <!-- Hibernate bytecode enhancer -->
+    <logger name="org.hibernate.bytecode.enhance">
+        <level value="debug"/>
+    </logger>
+    <logger name="org.hibernate.bytecode.spi">
+        <level value="debug"/>
     </logger>
 
     <logger name="com.zaxxer.hikari">
