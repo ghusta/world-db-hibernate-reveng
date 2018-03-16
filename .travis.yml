@@ -11,4 +11,4 @@ before_install:
   - docker ps
 
 script:
-  - mvn test
+  - mvn test -Pgen-hibernate-tools
