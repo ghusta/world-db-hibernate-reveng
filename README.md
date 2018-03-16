@@ -1,6 +1,6 @@
 # Hibernate Tools - Reverse Engineering for World DB (PostgreSQL)
 
-[![Build Status](https://travis-ci.org/ghusta/pagila-db-hibernate-reveng.svg?branch=master)](https://travis-ci.org/ghusta/pagila-db-hibernate-reveng)
+[![Build Status](https://travis-ci.org/ghusta/world-db-hibernate-reveng.svg?branch=master)](https://travis-ci.org/ghusta/world-db-hibernate-reveng)
 
 ## Maven command
 
