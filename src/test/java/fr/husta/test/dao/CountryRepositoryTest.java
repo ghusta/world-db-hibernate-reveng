@@ -58,7 +58,7 @@ public class CountryRepositoryTest
     public void findByName_pagination() throws Exception
     {
         String name = "France";
-        Pageable page = new PageRequest(0, 50);
+        Pageable page = PageRequest.of(0, 50);
         Page<Country> countries = countryRepository.findByName(name, page);
         assertThat(countries).isNotEmpty();
     }
@@ -75,7 +75,7 @@ public class CountryRepositoryTest
     public void findByNameLike_pagination() throws Exception
     {
         String name = "A%";
-        Pageable page = new PageRequest(0, 50);
+        Pageable page = PageRequest.of(0, 50);
         Page<Country> countries = countryRepository.findByNameLike(name, page);
         assertThat(countries).isNotEmpty();
         assertThat(countries.getContent()).isNotEmpty();
