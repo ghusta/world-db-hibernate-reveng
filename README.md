@@ -4,7 +4,7 @@
 
 ## Maven command
 
-`mvn clean generate-sources -Pgen-hibernate-tools`
+`mvn clean generate-sources -P gen-hibernate-tools`
 
 As a result, code will be generated in _target/generated-sources/hibernate_.
 
@@ -12,7 +12,7 @@ As a result, code will be generated in _target/generated-sources/hibernate_.
 
 You can use a docker container, like this one :
 
-`docker run -d -pxxxx:5432 --name world-db ghusta/postgres-world-db:2.1`
+`docker run -d -p xxxx:5432 --name world-db ghusta/postgres-world-db:2.2`
 
 ## Templates (FreeMarker)
 
