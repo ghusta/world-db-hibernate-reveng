@@ -16,3 +16,7 @@ install:
 
 script:
   - mvn test -Pgen-hibernate-tools
+
+after_success:
+  - echo "Sources générées par Hibernate Tools "
+  - ls -lhR target/generated-sources/hibernate/
