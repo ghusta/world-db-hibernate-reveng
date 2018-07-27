@@ -112,6 +112,11 @@ public class ExtractMetadataTest
         System.out.println(AnsiColor.colorize("PK COUNTRY => ", AnsiColor.FG_MAGENTA));
         System.out.println(listStringToBullet(colsList));
 
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES FK / TABLE ---"));
+        colsList = ExtractMetadataUtil.getTableImportedForeignKeysList(connection, currentSchema, "city");
+        System.out.println(AnsiColor.colorize("FK CITY => ", AnsiColor.FG_YELLOW));
+        System.out.println(listStringToBullet(colsList));
+
         connection.close();
     }
 
