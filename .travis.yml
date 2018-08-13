@@ -7,8 +7,8 @@ language: java
 
 before_install:
   - docker --version
-  - docker pull ghusta/postgres-world-db:2.2
-  - docker run -d --name world-db -e POSTGRES_USER="world" -e POSTGRES_PASSWORD="world123" -p 5510:5432 ghusta/postgres-world-db:2.2
+  - docker pull ghusta/postgres-world-db:2.2.1
+  - docker run -d --name world-db -e POSTGRES_USER="world" -e POSTGRES_PASSWORD="world123" -p 5510:5432 ghusta/postgres-world-db:2.2.1
   - docker ps
 
 install:
