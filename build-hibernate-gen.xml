@@ -51,7 +51,7 @@
                  classname="org.hibernate.tool.ant.HibernateToolTask"
                  classpath="plugin_classpath"/>
 
-        <echo message="Generation fichiers DAO (sources Java) "/>
+        <echo message="Generation fichiers DAO (sources Kotlin) "/>
         <hibernatetool destdir="${dest_dir}">
             <!-- au moins 1 config -->
             <jdbcconfiguration
@@ -77,11 +77,11 @@
 
             <!-- au moins 1 exporter -->
             <hbmtemplate
-                    filePattern="{package-name}/../dao/{class-name}Repository.java"
+                    filePattern="{package-name}/../dao/{class-name}Repository.kt"
                     destdir="${dest_dir}"
                     forEach="entity"
                     templatepath="${basedir}/templates"
-                    template="dao/JpaRepository.ftl"/>
+                    template="dao/JpaRepository.kt.ftl"/>
         </hibernatetool>
 
     </target>
