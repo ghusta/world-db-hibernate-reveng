@@ -12,7 +12,7 @@
     <description>Hibernate Tools - Reverse Engineering for World DB (PostgreSQL)</description>
 
     <prerequisites>
-        <maven>3.0</maven>
+        <maven>3.5</maven>
     </prerequisites>
 
     <properties>
