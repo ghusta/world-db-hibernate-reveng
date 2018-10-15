@@ -17,7 +17,7 @@ You can use a docker container, like this one :
 ## Templates (FreeMarker)
 
 - pojo : **pojo/Pojo.ftl**
-- dao (repository) : **dao/JpaRepository.ftl**
+- dao (repository) : **dao/JpaRepository.kt.ftl** (Kotlin version)
 
 ## Tips
 
