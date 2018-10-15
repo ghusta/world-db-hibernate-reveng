@@ -44,7 +44,7 @@ public interface ${entityName}Repository : ${pojo.importType("org.springframewor
      * @param ${property.name} critère recherche (égalité).
      * @return {@link List} de résultats.
      */
-    fun findBy${property.name?cap_first}(${property.name}: ${propertyJavaType}) : ${pojo.importType("java.util.List")}<${entityName}>
+    fun findBy${property.name?cap_first}(${property.name}: ${propertyJavaType}) : ${pojo.importType("kotlin.collections.List")}<${entityName}>
 
     /**
      * Finder pour : ${property.name}, avec pagination. 
@@ -86,7 +86,7 @@ public interface ${entityName}Repository : ${pojo.importType("org.springframewor
      * @param sort Options de tri.
      * @return {@link List} de résultats.
      */
-    fun findBy${property.name?cap_first}(${property.name}: ${propertyJavaType}, sort: ${pojo.importType("org.springframework.data.domain.Sort")}) : ${pojo.importType("java.util.List")}<${entityName}>
+    fun findBy${property.name?cap_first}(${property.name}: ${propertyJavaType}, sort: ${pojo.importType("org.springframework.data.domain.Sort")}) : ${pojo.importType("kotlin.collections.List")}<${entityName}>
 
 </#if>
 <#if c2j.hasMetaAttribute(property, "gen-finder-ignore-case")>
@@ -96,7 +96,7 @@ public interface ${entityName}Repository : ${pojo.importType("org.springframewor
      * @param ${property.name} critère recherche (égalité).
      * @return {@link List} de résultats.
      */
-    fun findBy${property.name?cap_first}IgnoreCase(${property.name}: ${propertyJavaType}) : ${pojo.importType("java.util.List")}<${entityName}>
+    fun findBy${property.name?cap_first}IgnoreCase(${property.name}: ${propertyJavaType}) : ${pojo.importType("kotlin.collections.List")}<${entityName}>
 
 </#if>
 <#if c2j.hasMetaAttribute(property, "gen-finder-java8-stream")>
@@ -130,7 +130,7 @@ public interface ${entityName}Repository : ${pojo.importType("org.springframewor
      * @param ${property.name} critère recherche (like) : peut contenir des caractères génériques comme '%' ou '_'.
      * @return Liste de résultats.
      */
-    fun findBy${property.name?cap_first}Like(${property.name}: ${propertyJavaType}) : ${pojo.importType("java.util.List")}<${entityName}>
+    fun findBy${property.name?cap_first}Like(${property.name}: ${propertyJavaType}) : ${pojo.importType("kotlin.collections.List")}<${entityName}>
 
     /**
      * Finder pour : ${property.name}, avec clause SQL LIKE, avec pagination.
@@ -140,7 +140,7 @@ public interface ${entityName}Repository : ${pojo.importType("org.springframewor
     /**
      * Finder pour : ${property.name}, avec clause SQL LIKE, avec tri.
      */
-    fun findBy${property.name?cap_first}Like(${property.name}: ${propertyJavaType}, sort: ${pojo.importType("org.springframework.data.domain.Sort")}) : ${pojo.importType("java.util.List")}<${entityName}>
+    fun findBy${property.name?cap_first}Like(${property.name}: ${propertyJavaType}, sort: ${pojo.importType("org.springframework.data.domain.Sort")}) : ${pojo.importType("kotlin.collections.List")}<${entityName}>
 
 </#if>
 <#if c2j.hasMetaAttribute(property, "gen-finder-like-ignore-case")>
@@ -150,7 +150,7 @@ public interface ${entityName}Repository : ${pojo.importType("org.springframewor
     * @param ${property.name} critère recherche (like) : peut contenir des caractères génériques comme '%' ou '_'.
     * @return Liste de résultats.
     */
-    fun findBy${property.name?cap_first}LikeIgnoreCase(${property.name}: ${propertyJavaType}) : ${pojo.importType("java.util.List")}<${entityName}>
+    fun findBy${property.name?cap_first}LikeIgnoreCase(${property.name}: ${propertyJavaType}) : ${pojo.importType("kotlin.collections.List")}<${entityName}>
 
     /**
     * Finder pour : ${property.name}, avec clause SQL LIKE, insensible à la casse, avec pagination.
@@ -160,7 +160,7 @@ public interface ${entityName}Repository : ${pojo.importType("org.springframewor
     /**
     * Finder pour : ${property.name}, avec clause SQL LIKE, insensible à la casse, avec tri.
     */
-    fun findBy${property.name?cap_first}LikeIgnoreCase(${property.name}: ${propertyJavaType}, sort: ${pojo.importType("org.springframework.data.domain.Sort")}) : ${pojo.importType("java.util.List")}<${entityName}>
+    fun findBy${property.name?cap_first}LikeIgnoreCase(${property.name}: ${propertyJavaType}, sort: ${pojo.importType("org.springframework.data.domain.Sort")}) : ${pojo.importType("kotlin.collections.List")}<${entityName}>
 
 </#if>
 <#if c2j.hasMetaAttribute(property, "gen-finder-between")>
@@ -171,7 +171,7 @@ public interface ${entityName}Repository : ${pojo.importType("org.springframewor
     * @param endVal critère fin.
     * @return Liste de résultats.
     */
-    fun findBy${property.name?cap_first}Between(startVal: ${propertyJavaType}, endVal: ${propertyJavaType}) : ${pojo.importType("java.util.List")}<${entityName}>
+    fun findBy${property.name?cap_first}Between(startVal: ${propertyJavaType}, endVal: ${propertyJavaType}) : ${pojo.importType("kotlin.collections.List")}<${entityName}>
 
 </#if>
 </#foreach>
