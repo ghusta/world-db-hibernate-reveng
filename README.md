@@ -28,3 +28,4 @@ You can use a docker container, like this one :
 
 - [Hibernate Tools](http://hibernate.org/tools/)
 - [FreeMarker](http://freemarker.org/)
+- [Spring Data + Kotlin](https://docs.spring.io/spring-data/data-commons/docs/current/reference/html/#_kotlin_support)
