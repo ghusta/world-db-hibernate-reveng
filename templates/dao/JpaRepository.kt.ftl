@@ -16,7 +16,7 @@ import ${pojo.getQualifiedDeclarationName()}
  *
  * @see JpaRepository
  */
-@${pojo.importType("javax.annotation.Generated")}(value = "Généré par Hibernate Tools ${version}", date = "${.now?iso_local}")
+@${pojo.importType("javax.annotation.Generated")}(value = ["Généré par Hibernate Tools ${version}"], date = "${.now?iso_local}")
 @${pojo.importType("org.springframework.stereotype.Repository")}
 @${pojo.importType("org.springframework.transaction.annotation.Transactional")}
 @SuppressWarnings("serial")
