@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner
 import kotlin.test.Test
 
 @RunWith(SpringRunner::class)
-@ContextConfiguration(classes = arrayOf(DatabaseConfiguration::class))
+@ContextConfiguration(classes = [DatabaseConfiguration::class])
 @ActiveProfiles("TEST")
 @TestDatabase  // includes @Transactional
 @Rollback
