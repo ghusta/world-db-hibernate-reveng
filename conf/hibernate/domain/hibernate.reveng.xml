@@ -40,6 +40,7 @@
             <meta attribute="gen-finder"/>
             <meta attribute="gen-finder-java8-stream"/>
             <meta attribute="gen-finder-like"/>
+            <meta attribute="gen-finder-like-ignore-case"/>
         </column>
 
         <foreign-key constraint-name="country_capital_fkey" foreign-schema="public">
