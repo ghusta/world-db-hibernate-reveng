@@ -90,6 +90,14 @@ public class ExtractMetadataTest
         System.out.println();
 
         currentSchema = "public";
+
+        List<String> sequenceList = ExtractMetadataUtil.getSequenceList(connection, currentSchema);
+        System.out.println(AnsiColor.colorizeDefault("--- LISTE DES SEQUENCES ---"));
+        System.out.println(AnsiColor.colorize("SCHEMA => " + currentSchema, AnsiColor.FG_RED));
+        System.out.println(sequenceList);
+        System.out.println();
+
+        currentSchema = "public";
         List<String> colsList;
 
         System.out.println(AnsiColor.colorizeDefault("--- LISTE DES COLONNES / TABLE ---"));
