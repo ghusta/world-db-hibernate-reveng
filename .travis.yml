@@ -12,10 +12,10 @@ before_install:
   - docker ps
 
 install:
-  - mvn dependency:go-offline -B -V
+  - mvn --batch-mode --show-version dependency:go-offline
 
 script:
-  - mvn test -Pgen-hibernate-tools -B
+  - mvn --batch-mode --show-version -Pgen-hibernate-tools test
 
 after_success:
   - echo "Sources générées par Hibernate Tools "
