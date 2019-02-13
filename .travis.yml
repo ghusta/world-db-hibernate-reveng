@@ -15,7 +15,7 @@ install:
   - mvn dependency:go-offline -B -V
 
 script:
-  - mvn test -Pgen-hibernate-tools
+  - mvn test -Pgen-hibernate-tools -B
 
 after_success:
   - echo "Sources générées par Hibernate Tools "
