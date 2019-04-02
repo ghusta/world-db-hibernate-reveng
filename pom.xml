@@ -23,7 +23,7 @@
         <hibernate.version>5.4.1.Final</hibernate.version>
 
         <spring-framework.version>5.1.5.RELEASE</spring-framework.version>
-        <spring-data-release-train.version>Lovelace-SR5</spring-data-release-train.version>
+        <spring-data-release-train.version>Lovelace-SR6</spring-data-release-train.version>
         <querydsl.version>4.2.1</querydsl.version>
 
         <slf4j.version>1.7.26</slf4j.version>
