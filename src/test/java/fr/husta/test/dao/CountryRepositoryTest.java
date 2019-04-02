@@ -72,6 +72,14 @@ public class CountryRepositoryTest
     }
 
     @Test
+    public void findByNameLikeIgnoreCase() throws Exception
+    {
+        String name = "fRaNce%";
+        List<Country> countries = countryRepository.findByNameLikeIgnoreCase(name);
+        assertThat(countries).isNotEmpty();
+    }
+
+    @Test
     public void findByNameLike_pagination() throws Exception
     {
         String name = "A%";
