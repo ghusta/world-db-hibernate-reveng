@@ -23,7 +23,7 @@
         <hibernate.version>5.3.0.Final</hibernate.version>
 
         <spring-framework.version>5.1.9.RELEASE</spring-framework.version>
-        <spring-data-jpa.version>2.0.14.RELEASE</spring-data-jpa.version>
+        <spring-data-release-train.version>Lovelace-SR10</spring-data-release-train.version>
         <querydsl.version>4.2.1</querydsl.version>
 
         <slf4j.version>1.7.25</slf4j.version>
@@ -44,20 +44,15 @@
                 <type>pom</type>
             </dependency>
 
-            <!-- Spring Data JPA -->
-            <!-- BOM -->
-            <!--<dependency>-->
-            <!--<groupId>org.springframework.data</groupId>-->
-            <!--<artifactId>spring-data-releasetrain</artifactId>-->
-            <!--<version>${release-train}</version>-->
-            <!--<scope>import</scope>-->
-            <!--<type>pom</type>-->
-            <!--</dependency>-->
+            <!-- SPRING-DATA - BOM-->
             <dependency>
                 <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-jpa</artifactId>
-                <version>${spring-data-jpa.version}</version>
+                <artifactId>spring-data-releasetrain</artifactId>
+                <version>${spring-data-release-train.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
+
             <!--
                 QueryDSL, utilisé par Spring Data JPA (optionnel)
                 http://www.querydsl.com/
