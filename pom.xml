@@ -23,7 +23,7 @@
         <hibernate.version>5.3.0.Final</hibernate.version>
 
         <spring-framework.version>5.1.0.RELEASE</spring-framework.version>
-        <spring-data-jpa.version>2.0.7.RELEASE</spring-data-jpa.version>
+        <spring-data-jpa.version>2.0.14.RELEASE</spring-data-jpa.version>
         <querydsl.version>4.2.1</querydsl.version>
 
         <slf4j.version>1.7.25</slf4j.version>
