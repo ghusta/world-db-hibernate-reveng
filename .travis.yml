@@ -5,6 +5,10 @@ services:
 
 language: java
 
+jdk:
+  - openjdk8
+  - openjdk11
+
 before_install:
   - docker --version
   - docker pull ghusta/postgres-world-db:2.2
