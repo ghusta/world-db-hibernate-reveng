@@ -530,11 +530,42 @@
                                 <artifactId>slf4j-simple</artifactId>
                                 <version>${slf4j.version}</version>
                             </dependency>
+
+                            <!-- JAXB not in Java 11+ -->
+                            <dependency>
+                                <groupId>javax.xml.bind</groupId>
+                                <artifactId>jaxb-api</artifactId>
+                                <version>2.3.1</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.glassfish.jaxb</groupId>
+                                <artifactId>jaxb-runtime</artifactId>
+                                <version>2.3.1</version>
+                            </dependency>
                         </dependencies>
                     </plugin>
 
                 </plugins>
             </build>
+        </profile>
+
+        <profile>
+            <id>java-11</id>
+            <activation>
+                <jdk>11</jdk>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                    <version>2.3.1</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-runtime</artifactId>
+                    <version>2.3.1</version>
+                </dependency>
+            </dependencies>
         </profile>
 
     </profiles>
